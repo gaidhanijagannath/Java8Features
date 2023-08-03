@@ -25,7 +25,7 @@ public class ConvertListToMap {
         employeesSalaryGreater50k.forEach(System.out::println);
 
 
-
+        //getting max salary
         long maximSalary =employeesList.stream()
                         .map(Employee::getSalary)
                         .reduce(Long.MIN_VALUE,(maxSalary,inputSalary) -> maxSalary > inputSalary ? maxSalary:inputSalary);
@@ -33,7 +33,7 @@ public class ConvertListToMap {
         System.out.println("Maximum salary of Employee - "+maximSalary);
 
 
-
+        //getting employee with max salary
         Optional<Employee> maxSalEmployee =
                 employeesList.stream().max(Comparator.comparing(Employee::getSalary));//returns optional
 
