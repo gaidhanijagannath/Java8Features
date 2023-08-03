@@ -3,6 +3,7 @@ package Java8Coding;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ConvertListToMap {
@@ -24,8 +25,19 @@ public class ConvertListToMap {
         employeesSalaryGreater50k.forEach(System.out::println);
 
 
-        employeesList.stream().reduce(Integer.MIN_VALUE,(e) -> e.getSalary()>e.getSalary() ?);
 
+        long maximSalary =employeesList.stream()
+                        .map(Employee::getSalary)
+                        .reduce(Long.MIN_VALUE,(maxSalary,inputSalary) -> maxSalary > inputSalary ? maxSalary:inputSalary);
+
+        System.out.println("Maximum salary of Employee - "+maximSalary);
+
+
+
+        Optional<Employee> maxSalEmployee =
+                employeesList.stream().max(Comparator.comparing(Employee::getSalary));//returns optional
+
+        System.out.println(maxSalEmployee.get()); //get() to get employee out of optional.
 
 
 
