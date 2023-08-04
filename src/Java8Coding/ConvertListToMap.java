@@ -19,28 +19,6 @@ public class ConvertListToMap {
 
         empMap.forEach((key,value) -> System.out.println("Name: "+key+", : "+value));
 
-        //employees salary greater than 50k
-        List<Employee> employeesSalaryGreater50k = employeesList.stream().
-                filter(employee -> employee.getSalary()>50000).toList();
-        employeesSalaryGreater50k.forEach(System.out::println);
-
-
-        //getting max salary
-        long maximSalary =employeesList.stream()
-                        .map(Employee::getSalary)
-                        .reduce(Long.MIN_VALUE,(maxSalary,inputSalary) -> maxSalary > inputSalary ? maxSalary:inputSalary);
-
-        System.out.println("Maximum salary of Employee - "+maximSalary);
-
-
-        //getting employee with max salary
-        Optional<Employee> maxSalEmployee =
-                employeesList.stream().max(Comparator.comparing(Employee::getSalary));//returns optional
-
-        System.out.println(maxSalEmployee.get()); //get() to get employee out of optional.
-
-
-        //sample testing for commit
 
     }
 }
