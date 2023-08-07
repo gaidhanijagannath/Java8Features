@@ -1,5 +1,7 @@
 package Java8Coding;
 
+import java.util.Objects;
+
 public class Employee {
 
     private int id;
@@ -7,6 +9,29 @@ public class Employee {
     private String phone;
     private String Address;
     private long salary;
+
+    private int age;
+
+    public Employee(int id, String name, String phone, String address, long salary, int age) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        Address = address;
+        this.salary = salary;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", Address='" + Address + '\'' +
+                ", salary=" + salary +
+                ", age=" + age +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -48,23 +73,12 @@ public class Employee {
         this.salary = salary;
     }
 
-
-    public Employee(int id, String name, String phone, String address, long salary) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        Address = address;
-        this.salary = salary;
+    public int getAge() {
+        return age;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", Address='" + Address + '\'' +
-                ", salary=" + salary +
-                '}';
+    public void setAge(int age) {
+        this.age = age;
     }
+
 }
