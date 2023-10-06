@@ -11,7 +11,7 @@ public class ArrayMultiplicationUsingStream {
         List<Integer> numberList = Arrays.asList(numbers);
 
         Integer multiplication = numberList.stream()
-                                           .reduce(1,(a,b)->a*b);
+                                           .reduce(1,(start,next)->start*next);
         System.out.println(multiplication);
 
 

@@ -14,7 +14,7 @@ public class MatchingOrCounting {
         String[] names ={"jagannath","sandeep","jagannath","Saurabh","Hitesh","Rohan"};
 
         Supplier<Stream<String>> inputStream = () -> Stream.of(names);
-        //we are creating supplier of streams and getting new stream whe
+        //we are creating supplier of streams and getting new stream whenever requested
 
 
         //with below code is we cant reuse the stream.
@@ -22,11 +22,11 @@ public class MatchingOrCounting {
         /*Stream<String> namesList  = Arrays.asList(names).stream();
         namesList.forEach(System.out::println); // USE 1 - OK
 
-        USE 2 - NOT OK
+        USE 2 - NOT OK will give error.
         Long count = namesList.filter(e -> e.equalsIgnoreCase("jagannath") *//*"jagannath" ::equalsIgnoreCase*//* ).count();
         System.out.println(count);*/
 
-        inputStream.get().forEach(System.out::println); // New stream everytime with get() method.
+        inputStream.get().forEach(System.out::println); // you need to get new stream everytime with get() method.
 
         Long count = inputStream.get().filter(e -> e.equalsIgnoreCase("jagannath")).count();
                 System.out.println(count);

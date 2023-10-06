@@ -13,10 +13,10 @@ public class StreamObject {
 
         // if you have objects stored in any array or any collection we can create object of stream and process it.
         String names[] = {"A","I","Y","V","D"};
-        Stream<String> intStream = Stream.of(names);
+        Stream<String> strStream = Stream.of(names);
 
         //consumer interface is passed.
-        intStream.forEach(System.out::print);
+        strStream.forEach(System.out::print);
 
         //Stream intStream = (Stream) Arrays.stream(new int[]{1,5,6,7,8});
 

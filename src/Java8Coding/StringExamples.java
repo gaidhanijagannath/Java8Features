@@ -12,8 +12,8 @@ public class StringExamples {
 
         //1)String joiner Java 8.
         StringJoiner joiner = new StringJoiner("-","[","]");
-        for (String inputArr: inputArray ) {
-                joiner.add(inputArr);
+        for (String inputA: inputArray ) {
+                joiner.add(inputA);
         }
         System.out.println("Using StringJoiner - "+joiner);
 
@@ -23,7 +23,7 @@ public class StringExamples {
         List<String> inputList =Arrays.asList(inputArray); //creating list from array.
 
         //2)we can perform same operation with streams.
-        String outputList1 = inputList.stream().collect(Collectors.joining("-"));
+        String outputList1 = inputList.stream().collect(Collectors.joining(":"));
         System.out.println("Using Streams - "+outputList1);
 
 
@@ -41,12 +41,12 @@ public class StringExamples {
 
         //Way 1
 
-        String[] vowelsCountArray = vowelsString.split("");
-        List<String> vowelsList = new ArrayList<>();
-        vowelsList.addAll(Arrays.asList(vowelsCountArray));
+        String[] vowelsCountArray = vowelsString.replaceAll(" ","").split("");
+        List<String> vowelsList = Arrays.asList(vowelsCountArray);
 
+        System.out.println("List of characters in array - " + vowelsList);
 
-         long vowelsCnt = vowelsList.stream().filter(e ->
+        long vowelsCnt = vowelsList.stream().filter(e ->
                         e.equalsIgnoreCase("A") ||
                         e.equalsIgnoreCase("E") ||
                         e.equalsIgnoreCase("I") ||
@@ -82,7 +82,7 @@ public class StringExamples {
         long vowelsCnt1 = vowelsString.chars().filter(ch -> (
                         'a' == ch || 'e' == ch || 'i' == ch || 'o' == ch || 'u' == ch ||
                                 'A' == ch || 'E' == ch || 'I' == ch || 'O' == ch || 'U' == ch)) // filter out vowels
-                .count(); // count vowels
+                .distinct().count(); // count vowels.
 
         System.out.println("No of vowels in list Method 2 - " + vowelsCnt1);
 
@@ -93,6 +93,7 @@ public class StringExamples {
                  .mapToObj(x->(char)x).collect(Collectors.groupingBy(Object::toString,Collectors.counting()));
 
 
+        vowelsMap2.forEach((key,value) -> System.out.println(key+" "+ value));
 
 
     }

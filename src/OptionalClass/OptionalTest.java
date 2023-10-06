@@ -18,6 +18,7 @@ public class OptionalTest {
         Optional<Integer> b = Optional.of(value2);
 
         System.out.println(OptionalTest.sum(a,b));
+
     }
 
     public Integer sum(Optional<Integer> a, Optional<Integer> b) {
@@ -30,7 +31,7 @@ public class OptionalTest {
         //the default value passed.
         Integer value1 = a.orElse(0);
 
-        //Optional.get - gets the value, value should be present
+        //Optional.get - gets the value, value should be present here
         Integer value2 = b.get();
         return value1 + value2;
 

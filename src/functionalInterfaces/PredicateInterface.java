@@ -17,7 +17,7 @@ public class PredicateInterface {
         4.Avoids boilerplate code.
         */
 
-        Predicate<String> checkLength = str -> str.length()>5;
+        Predicate<String> checkLength = str -> str.length()>=5;
         System.out.println(checkLength.test("Jagannath"));
 
         //predicate chaining

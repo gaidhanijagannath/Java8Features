@@ -38,7 +38,7 @@ public class HighestSalary {
         //nth highest salary
         Optional<Employee> secondHighestSalaryEmployee =
                 employeesData.stream()
-                        .sorted(Comparator.comparingLong(Employee::getSalary).reversed())
+                        .sorted(Comparator.comparing(Employee::getSalary).reversed())
                         .skip(1) //
                         .findFirst();
 
@@ -47,8 +47,8 @@ public class HighestSalary {
                 "2nd Highest salaried employee => "+secondHighestSalaryEmployee.get()
                 : "resource not Available.");
 
-        // best suggested way to print optional
-        //System.out.println(secondHighestSalaryEmployee.map(employee -> "2nd Highest salaried employee => " + employee).orElse("Not Available."));
+        //Best suggested way to print optional.
+        //System.out.println(secondHighestSalaryEmployee.map(employee -> "2nd Highest salaried employee is " + employee).orElse("Not Available."));
 
 
 
@@ -63,19 +63,27 @@ public class HighestSalary {
 
 
         // second-highest number in array.
-        int[] numbers = {8,9,4,6,1};
+        int[] numbers = {8,9,9,4,6,1};
 
-        //convert int[] array to List<Integer>.
+        // agar integer datatype hota array to it was easy
+        // List<Integer> listNumbers2 = Arrays.asList(numbers);
+
+        //convert int[] array to List<Integer> ***
         List<Integer> listNumbers = Arrays.stream(numbers).boxed().toList();
 
         //convert int[] array to stream
         IntStream numbersStream = Arrays.stream(numbers);
 
-        int secondHighestNumber = numbersStream.sorted().skip(numbers.length-2).findFirst().getAsInt();
+        int secondHighestNumber = numbersStream
+                .sorted()
+                .distinct()
+                .skip(numbers.length-2)
+                .findFirst()
+                .getAsInt();
         System.out.println(secondHighestNumber);
 
 
-        System.out.println(listNumbers.stream().sorted().skip(salaries.size()-1).findFirst().get());
+        System.out.println(listNumbers.stream().sorted().distinct().skip(salaries.size()-2).findFirst().get());
 
 
 

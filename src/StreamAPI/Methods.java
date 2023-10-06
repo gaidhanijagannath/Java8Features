@@ -1,6 +1,7 @@
 package StreamAPI;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,31 +14,29 @@ public class Methods {
         //filter(Predicate interface)
 
         List<String> list = List.of("Jagannath","Saurabh","Hitesh","Sandeep");
-        Stream<String>  nameStream = list.stream();
         List<String> namesStartsWithA = list.stream().filter((e)->e.startsWith("J") || e.startsWith("j") || e.startsWith("S")).collect(Collectors.toList());
         System.out.println(namesStartsWithA);
 
         namesStartsWithA.forEach(e-> System.out.println(e));
-        //namesStartsWithA.forEach(System.out::println); method reference
+        //namesStartsWithA.forEach(System.out::println); using method reference
 
 
 
         //map(function interface) - operation on each element and returns it.
         List<Integer> numList = List.of(4,5,8,9);
-        System.out.println(numList.stream().map(i -> i*i).collect(Collectors.toList()));
+        System.out.println("Square of each element in list" + numList.stream().map(i -> i * i).toList());
 
 
         list.stream().sorted().forEach(System.out::println);
 
         System.out.println("Min Number- "+numList.stream().min(Integer::compareTo).get()); //using method reference.
-        System.out.println("Max Number- "+numList.stream().max((x,y)-> x.compareTo(y)).get());
+        System.out.println("Max Number- "+numList.stream().max(Integer::compareTo).get());
 
 
         //sorted()
         List<String> names = Arrays.asList("Reflect","Collection","Stream");
         List<String> result = names.stream()
-                .sorted()
-                .collect(Collectors.toList());
+                .sorted().toList();
         System.out.println(result);
 
 
@@ -53,7 +52,11 @@ public class Methods {
                 .reduce(Integer.MIN_VALUE,(max,input) -> max > input ? max : input);
         // OR number.stream().reduce(Integer::max).get();
 
-        System.out.println(maxNumber);
+        System.out.println("Max-"+ maxNumber);
+
+        Integer minNumber = number.stream()
+                .reduce(Integer.MAX_VALUE,(min,input) -> min < input ? min : input);
+        System.out.println("Min-"+ minNumber);
 
 
         String maxString = names.stream()

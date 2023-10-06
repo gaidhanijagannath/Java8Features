@@ -40,7 +40,7 @@ public class StreamApiImplementation {
             }
 
         }
-        System.out.println(listEven);
+        System.out.println("Without stream -" + listEven);
 
         //Alternative to above thing is using stream API to filter.
 
@@ -52,12 +52,10 @@ public class StreamApiImplementation {
         System.out.println("Using stream - "+newEvenList);
 
 
-
          Double averageOfGradeA = EmployeeDatabase.getAllEmployees()
                  .stream()
                  .filter( employee -> employee.getGrade().equalsIgnoreCase("A"))
-                 .map(employee -> employee.getSalary())
-                 .mapToDouble(i->i*2)
+                 .mapToDouble(Employee::getSalary)
                  .average()
                  .getAsDouble();
 
