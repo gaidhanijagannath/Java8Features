@@ -8,10 +8,15 @@ public class ArrayMultiplicationUsingStream {
 
         Integer[] numbers = {5,6,8,3,2};
 
-        List<Integer> numberList = Arrays.asList(numbers);
 
+<<<<<<< Updated upstream
         Integer multiplication = numberList.stream()
                                            .reduce(1,(start,next)->start*next);
+=======
+        Integer multiplication =Arrays.stream(numbers)
+                                      .reduce(1,(a,b) -> a*b);
+
+>>>>>>> Stashed changes
         System.out.println(multiplication);
 
 

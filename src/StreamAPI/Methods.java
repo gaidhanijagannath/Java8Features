@@ -14,7 +14,14 @@ public class Methods {
         //filter(Predicate interface)
 
         List<String> list = List.of("Jagannath","Saurabh","Hitesh","Sandeep");
+<<<<<<< Updated upstream
         List<String> namesStartsWithA = list.stream().filter((e)->e.startsWith("J") || e.startsWith("j") || e.startsWith("S")).collect(Collectors.toList());
+=======
+        Stream<String>  nameStream = list.stream();
+        List<String> namesStartsWithA = list.stream()
+                .filter((e)->e.startsWith("J") || e.startsWith("j") || e.startsWith("S"))
+                .collect(Collectors.toList());
+>>>>>>> Stashed changes
         System.out.println(namesStartsWithA);
 
         namesStartsWithA.forEach(e-> System.out.println(e));
@@ -44,7 +51,7 @@ public class Methods {
         List<Integer> number = Arrays.asList(2,3,4,5,8,11);
         int even = number.stream()
                 .filter(x->x%2 == 0)
-                .reduce(0,(ans,i)-> ans+i); //identity is initial value.
+                .reduce(0,(ans,i)-> ans+i); //identity is initial value. or .reduce(0,Integer::Sum)
         System.out.println(even);
 
         //Max and Min finding.
